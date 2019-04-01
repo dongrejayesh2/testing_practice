@@ -1,0 +1,28 @@
+Locating GUI Elements
+Locating elements in WebDriver is done by using the "findElement(By.locator())" method. The "locator" part of the code is same as any of the locators previously discussed in the Selenium IDE chapters of these tutorials. Infact, it is recommended that you locate GUI elements using IDE and once successfully identified export the code to webdriver.
+
+Here is a sample code that locates an element by its id. Facebook is used as the Base URL.
+
+package newproject;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class PG2 {
+    public static void main(String[] args) {
+    	System.setProperty("webdriver.firefox.marionette","C:\\geckodriver.exe");
+    	WebDriver driver = new FirefoxDriver();
+        String baseUrl = "http://www.facebook.com";
+        String tagName = "";
+        
+        driver.get(baseUrl);
+        tagName = driver.findElement(By.id("email")).getTagName();
+        System.out.println(tagName);
+        driver.close();
+        System.exit(0);
+}
+}
+
+We used the getTagName() method to extract the tag name of that particular element whose id is "email". When run, this code should be able to correctly identify the tag name "input" and will print it out on Eclipse's Console window.
+
+
